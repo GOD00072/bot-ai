@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin: 20px 0;
+    }
+    form {
+      margin: 20px 0;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>File Upload</h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" name="file" id="fileInput">
+    <button type="submit">Upload</button>
+  </form>
+  <h2>Files</h2>
+  <ul id="fileList"></ul>
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData();
+      const fileInput = document.getElementById('fileInput');
+      formData.append('file', fileInput.files[0]);
+      const response = await fetch('/upload', {
+        method: 'POST',
+        body: formData
+      });
+      if (response.ok) {
+        alert('File uploaded successfully');
+        loadFiles();
+      } else {
+        alert('File upload failed');
+      }
+    });
+
+    async function loadFiles() {
+      const response = await fetch('/files');
+      const files = await response.json();
+      const fileList = document.getElementById('fileList');
+      fileList.innerHTML = '';
+      files.forEach(file => {
+        const li = document.createElement('li');
+        li.textContent = file;
+        const downloadLink = document.createElement('a');
+        downloadLink.href = `/download/${file}`;
+        downloadLink.textContent = 'Download';
+        li.appendChild(downloadLink);
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = async () => {
+          const res = await fetch(`/delete/${file}`, { method: 'DELETE' });
+          if (res.ok) {
+            loadFiles();
+          } else {
+            alert('File delete failed');
+          }
+        };
+        li.appendChild(deleteButton);
+        fileList.appendChild(li);
+      });
+    }
+
+    window.onload = loadFiles;
+  </script>
+</body>
+</html>
