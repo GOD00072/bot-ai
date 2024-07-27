@@ -104,11 +104,11 @@ async function saveChatHistoryToFile(userId, chatHistory) {
 
 async function sendLoadingAnimation(userId, loadingSeconds) {
   const lineLoadingUrl = 'https://api.line.me/v2/bot/chat/loading/start';
-  const channelAccessToken = 'cWHKG78kh9t8LwxiiNMCNclUQAiJE97hC4UDnlNkstYP2zUaFS5zmfRadHmwC9enl9zaZsngI7uy7hyVv/ZQOK4iVlC52Qqj50yxYmWNEtYBpNRjLA3I247T9E6WPfW5P75Ost6WGooCM0l3czH+KQdB04t89/1O/w1cDnyilFU='; // Replace with your channel access token
+  const channelAccessToken = 'bn4T59zyPJsKf1Vgqgyf4HsYeA0Fx8knhTJOF6y8cnOF2/ZzXkhB2EfdUBbVuQvQxKtQL5dZVbRINfWzX/NIOBdfP0biE4mZj9V2Y24CnNXfHGsXj7IP5pxK/hWbBG4tuY9HzTINdObIJc0tMVUY4AdB04t89/1O/w1cDnyilFU='; // Replace with your channel access token
 
   const headers = {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer cWHKG78kh9t8LwxiiNMCNclUQAiJE97hC4UDnlNkstYP2zUaFS5zmfRadHmwC9enl9zaZsngI7uy7hyVv/ZQOK4iVlC52Qqj50yxYmWNEtYBpNRjLA3I247T9E6WPfW5P75Ost6WGooCM0l3czH+KQdB04t89/1O/w1cDnyilFU=`,
+    'Authorization': `Bearer bn4T59zyPJsKf1Vgqgyf4HsYeA0Fx8knhTJOF6y8cnOF2/ZzXkhB2EfdUBbVuQvQxKtQL5dZVbRINfWzX/NIOBdfP0biE4mZj9V2Y24CnNXfHGsXj7IP5pxK/hWbBG4tuY9HzTINdObIJc0tMVUY4AdB04t89/1O/w1cDnyilFU=`,
   };
 
   const body = {
@@ -141,7 +141,7 @@ app.post('/webhook', async (req, res) => {
       try {
         const response = await axios.get(profileUrl, {
           headers: {
-            Authorization: 'Bearer cWHKG78kh9t8LwxiiNMCNclUQAiJE97hC4UDnlNkstYP2zUaFS5zmfRadHmwC9enl9zaZsngI7uy7hyVv/ZQOK4iVlC52Qqj50yxYmWNEtYBpNRjLA3I247T9E6WPfW5P75Ost6WGooCM0l3czH+KQdB04t89/1O/w1cDnyilFU='
+            Authorization: 'Bearer bn4T59zyPJsKf1Vgqgyf4HsYeA0Fx8knhTJOF6y8cnOF2/ZzXkhB2EfdUBbVuQvQxKtQL5dZVbRINfWzX/NIOBdfP0biE4mZj9V2Y24CnNXfHGsXj7IP5pxK/hWbBG4tuY9HzTINdObIJc0tMVUY4AdB04t89/1O/w1cDnyilFU='
           }
         });
 
@@ -182,7 +182,7 @@ app.post('/webhook', async (req, res) => {
       const lineReplyUrl = 'https://api.line.me/v2/bot/message/reply';
       const headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer cWHKG78kh9t8LwxiiNMCNclUQAiJE97hC4UDnlNkstYP2zUaFS5zmfRadHmwC9enl9zaZsngI7uy7hyVv/ZQOK4iVlC52Qqj50yxYmWNEtYBpNRjLA3I247T9E6WPfW5P75Ost6WGooCM0l3czH+KQdB04t89/1O/w1cDnyilFU=', 
+        'Authorization': 'Bearer bn4T59zyPJsKf1Vgqgyf4HsYeA0Fx8knhTJOF6y8cnOF2/ZzXkhB2EfdUBbVuQvQxKtQL5dZVbRINfWzX/NIOBdfP0biE4mZj9V2Y24CnNXfHGsXj7IP5pxK/hWbBG4tuY9HzTINdObIJc0tMVUY4AdB04t89/1O/w1cDnyilFU=', 
       };
 
 
